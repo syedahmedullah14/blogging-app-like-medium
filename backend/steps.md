@@ -10,3 +10,4 @@
 
 # put connection pool url in wrangler.toml and main database url in .env
 
+# migrate database using npx prisma migrate dev --name init_schema
