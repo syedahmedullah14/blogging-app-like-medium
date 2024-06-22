@@ -1,5 +1,14 @@
+import { SignupInput } from "@syedahmedullahjaser/zod-inference-medium-blog"
+import { ChangeEvent, ChangeEventHandler, useState } from "react"
 import { Link } from "react-router-dom"
 export const Auth = ({type}: {type: "signup" | "signin"}) => {
+
+  const postInputs = useState<SignupInput>({
+    name: "",
+    username: "",
+    password: ""
+  })
+
   return (
     <div className="h-screen flex justify-center flex-col">
         <div className="flex justify-center">
@@ -18,9 +27,13 @@ export const Auth = ({type}: {type: "signup" | "signin"}) => {
   )
 }
 
+interface LabelledInputType{
+  label: string,
+  placeholder: string,
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+}
 
-
-function LabelledInput({label, placeholder, onChange}){
+function LabelledInput({label, placeholder, onChange}: LabelledInputType){
   return <div>
 
       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label>
