@@ -17,8 +17,10 @@ export const Auth = ({type}: {type: "signup" | "signin"}) => {
                 Create an account
             </div>
             <div className="text-slate-500 mt-3 mb-3">
-                Already have an account?
-                <Link className="pl-2 underline" to={"/signin"}>Login</Link>
+                {type === "signin" ? "Dont have an account:?" : "Already have an account?"}
+                <Link className="pl-2 underline" to={"/signin"}>
+                  {type === "signin" ? "Sign Up" : "Sign In"}
+                </Link>
             </div>
 
             <LabelledInput label="Name" placeholder="Syed Jaser" onChange={(e) =>{
@@ -42,7 +44,7 @@ export const Auth = ({type}: {type: "signup" | "signin"}) => {
               })
             }}/>
 
-          <button type="button" className="mt-2 w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">{type === "signup" ? "Sign Up" : "Sign In"}</button>
+          <button type="button" className="mt-6 w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">{type === "signup" ? "Sign Up" : "Sign In"}</button>
 
           </div>
         </div>
