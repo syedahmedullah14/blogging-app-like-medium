@@ -1,5 +1,3 @@
-import { Appbar } from "./Appbar"
-
 interface BlogCardProps{
     authorname: string,
     title: string,
@@ -14,12 +12,10 @@ export const BlogCard = ({
     publishedDate
 }: BlogCardProps) => {
   return (
-    <div>
-        <div className="p-4 border-b border-slate-300 pb-4">
-        <Appbar/>
+    <div className="p-4 border-b border-slate-300 pb-4">
         <div className="flex">
             <div className="">
-            <Avatar name={authorname}/> 
+            <Avatar size={6} name={authorname}/> 
             </div>
            <div className="font-extralight pl-2 text-sm flex justify-center flex-col">
            {authorname}
@@ -40,7 +36,7 @@ export const BlogCard = ({
         <div className="text-slate-400 text-sm pt-4">
             {`${Math.ceil(content.length / 100)} minutes(s) read`}
         </div>
-        </div>
+    
     </div>
   )
 }
@@ -51,8 +47,9 @@ function Circle(){
     </div>
 }
 
-function Avatar({ name }: { name: string}){
-    return <div className="relative inline-flex items-center justify-center w-6 h-6 overflow-hidden bg-gray-400 rounded-full dark:bg-gray-700">
+export function Avatar({ name, size=6 }: { name: string, size:Number}){
+    return <div className={`relative inline-flex items-center justify-center 
+    w-${size} h-${size} overflow-hidden bg-gray-400 rounded-full dark:bg-gray-700`}>
         <span className="font-small text-gray-900 dark:text-gray-300">
             {name[0]}
         </span>
