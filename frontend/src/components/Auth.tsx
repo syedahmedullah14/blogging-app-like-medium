@@ -1,5 +1,5 @@
 import { SignupInput } from "@syedahmedullahjaser/zod-inference-medium-blog"
-import { ChangeEvent, ChangeEventHandler, useState } from "react"
+import { ChangeEvent, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { BACKEND_URL } from "../config"
 import axios from "axios"

@@ -12,10 +12,8 @@ export const userRouter = new Hono<{
 }>();
 
 userRouter.post('/signup', async (c) => {
-	const prisma = new PrismaClient({
-		datasourceUrl: c.env?.DATABASE_URL,
-	}).$extends(withAccelerate());
 	const body = await c.req.json();
+	console.log(body)
 	const { success } = signupInput.safeParse(body);
 	if(!success){
 		c.status(411);
@@ -23,27 +21,31 @@ userRouter.post('/signup', async (c) => {
 			msg: "Inputs are incorrect"
 		})
 	}
+	
+	const prisma = new PrismaClient({
+		datasourceUrl: c.env?.DATABASE_URL,
+	}).$extends(withAccelerate());
+
 	try {
 		const user = await prisma.user.create({
 			data: {
 				email: body.email,
-				password: body.password
+				password: body.password,
+				name: body.name,
 			}
 		});
 
     const jwt = await sign({id: user.id}, c.env.JWT_SECRET)
-    return c.json({ jwt });
+    return c.text(jwt);
 	
   } catch(e) {
-		return c.status(403);
+		c.status(411);
+		return c.text("Invalid")
 	}
 })
 
 userRouter.post('/signin', async (c) => {
-	const prisma = new PrismaClient({
-		datasourceUrl: c.env?.DATABASE_URL	,
-	}).$extends(withAccelerate());
-
+	
 	const body = await c.req.json();
 	const { success } = signinInput.safeParse(body);
 	if(!success){
@@ -52,17 +54,29 @@ userRouter.post('/signin', async (c) => {
 			msg: "Inputs are incorrect"
 		})
 	}
-	const user = await prisma.user.findUnique({
-		where: {
-			email: body.email
-		}
-	});
+	const prisma = new PrismaClient({
+		datasourceUrl: c.env?.DATABASE_URL,
+	}).$extends(withAccelerate());
 
-	if (!user) {
-		c.status(403); //unauthorised
-		return c.json({ error: "user not found" });
+	try {
+		const user = await prisma.user.findFirst({
+			where: {
+				email: body.email,
+				password: body.password
+			}
+		});
+	
+		if (!user) {
+			c.status(403); //unauthorised
+			return c.json({ msg: "Incorrect credentials" });
+		}
+	
+		const jwt = await sign({ id: user.id }, c.env.JWT_SECRET);
+		return c.json({ jwt });
+	
+	} catch(e){
+		c.status(411);
+		return c.text("Invalid")
 	}
 
-	const jwt = await sign({ id: user.id }, c.env.JWT_SECRET);
-	return c.json({ jwt });
-})
+	})
