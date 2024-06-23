@@ -8,7 +8,7 @@ export const Auth = ({type}: {type: "signup" | "signin"}) => {
   const navigate = useNavigate();
   const [postInputs, setPostInputs] = useState<SignupInput>({
     name: "",
-    username: "",
+    email: "",
     password: ""
   })
 
@@ -47,7 +47,7 @@ export const Auth = ({type}: {type: "signup" | "signin"}) => {
             <LabelledInput label="Username" placeholder="syedjaser" onChange={(e) =>{
               setPostInputs({
                 ...postInputs,
-                username: e.target.value
+                email: e.target.value
               })
             }}/>
 
