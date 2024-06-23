@@ -16,7 +16,7 @@ userRouter.post('/signup', async (c) => {
 	console.log(body)
 	const { success } = signupInput.safeParse(body);
 	console.log(success)
-	if(success){
+	if(!success){
 		c.status(411);
 		return c.json({
 			msg: "Inputs are incorrect"
@@ -48,7 +48,7 @@ userRouter.post('/signin', async (c) => {
 	
 	const body = await c.req.json();
 	const { success } = signinInput.safeParse(body);
-	if(success){
+	if(!success){
 		c.status(411);
 		return c.json({
 			msg: "Inputs are incorrect"

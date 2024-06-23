@@ -1,8 +1,8 @@
-import { SignupInput } from "@syedahmedullahjaser/zod-inference-medium-blog"
 import { ChangeEvent, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { BACKEND_URL } from "../config"
 import axios from "axios"
+import { SignupInput } from "@syedahmedullahjaser/zod-inference-medium-blog"
 export const Auth = ({type}: {type: "signup" | "signin"}) => {
 
   const navigate = useNavigate();
