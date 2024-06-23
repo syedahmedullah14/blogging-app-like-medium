@@ -1,13 +1,27 @@
 import { SignupInput } from "@syedahmedullahjaser/zod-inference-medium-blog"
 import { ChangeEvent, ChangeEventHandler, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { BACKEND_URL } from "../config"
+import axios from "axios"
 export const Auth = ({type}: {type: "signup" | "signin"}) => {
 
+  const navigate = useNavigate();
   const [postInputs, setPostInputs] = useState<SignupInput>({
     name: "",
     username: "",
     password: ""
   })
+
+  async function sendRequest () {
+    try{
+      const response = await axios.post(`${BACKEND_URL}/api/v1/user/signup`)
+      const jwt = response.data;
+      localStorage.setItem("token", jwt);
+      navigate("/blogs")
+    } catch (e){
+
+    }
+  }
 
   return (
     <div className="h-screen flex justify-center flex-col">
