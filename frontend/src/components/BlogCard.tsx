@@ -1,3 +1,5 @@
+import { Appbar } from "./Appbar"
+
 interface BlogCardProps{
     authorname: string,
     title: string,
@@ -12,7 +14,9 @@ export const BlogCard = ({
     publishedDate
 }: BlogCardProps) => {
   return (
-    <div className="p-4 border-b border-slate-300 pb-4">
+    <div>
+        <div className="p-4 border-b border-slate-300 pb-4">
+        <Appbar/>
         <div className="flex">
             <div className="">
             <Avatar name={authorname}/> 
@@ -36,7 +40,7 @@ export const BlogCard = ({
         <div className="text-slate-400 text-sm pt-4">
             {`${Math.ceil(content.length / 100)} minutes(s) read`}
         </div>
-    
+        </div>
     </div>
   )
 }
