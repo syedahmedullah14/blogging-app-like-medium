@@ -19,7 +19,7 @@ blogRouter.use("/*", async (c, next) => {
     const user = await verify(authHeader, c.env.JWT_SECRET)
     try {
         if(user){
-            //@ts-ignore 
+            
             c.set("userId", user.id);
             await next();
         }

@@ -17,7 +17,7 @@ export const Blogs = () => {
     <div>
        <Appbar />
       <div  className="flex justify-center">
-        <div className="max-w-xl">
+        <div className="">
         {blogs.map(blog => <BlogCard 
          authorname ={"Jaser"}
          title={"How an ugly single page website makes $5000 a month wihtout affiliate marketing"}
