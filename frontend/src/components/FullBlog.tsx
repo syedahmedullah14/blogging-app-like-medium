@@ -15,9 +15,12 @@ export const FullBlog = ({ blog }: { blog: Blog }) => {
           </div>
 
           <div className="col-span-4">
-            Author
+            <div className="text-slate-500">
+                Author
+            </div>
+            
             <div className="flex">
-                <div>
+                <div className="pr-4 flex flex-col justify-center">
                 <Avatar size={6} name={blog.author.name || "Anonymous"}/>
                 </div>
               <div>
