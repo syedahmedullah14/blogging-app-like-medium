@@ -19,9 +19,9 @@ export const Blogs = () => {
       <div  className="flex justify-center">
         <div className="">
         {blogs.map(blog => <BlogCard 
-         authorname ={"Jaser"}
-         title={"How an ugly single page website makes $5000 a month wihtout affiliate marketing"}
-         content={"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste doloremque voluptates sit laboriosam voluptatum eligendi, facilis fugit magni magnam maxime ad nemo vel officia. Rem fugiat ea voluptate excepturi voluptas?"}
+         authorname ={blog.author.name || "Jaser"}
+         title={blog.title}
+         content={blog.content}
          publishedDate={"23rd June"} />) }
         
        

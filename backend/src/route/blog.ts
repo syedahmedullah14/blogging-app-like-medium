@@ -15,11 +15,11 @@ export const blogRouter = new Hono<{
 }>();
 
 blogRouter.use("/*", async (c, next) => {
-    const authHeader = c.req.header("authorization") || ""
+    const authHeader = c.req.header("Authorization") || ""
     const user = await verify(authHeader, c.env.JWT_SECRET)
     try {
         if(user){
-            
+            //@ts-ignore
             c.set("userId", user.id);
             await next();
         }
