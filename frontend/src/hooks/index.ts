@@ -7,9 +7,13 @@ export const useBlogs = () =>{
     const [blogs, setBlogs] = useState([]);
 
     useEffect(() => {
-        axios.get(`${BACKEND_URL}/api/v1/blog/bulk`)
+        axios.get(`${BACKEND_URL}/api/v1/blog/bulk`, {
+            headers:{
+                Authorization: localStorage.getItem("token")
+            }
+        })
             .then(response => {
-                setBlogs(response.data);
+                setBlogs(response.data.blogs);
                 setLoading(false)
             })
     })
