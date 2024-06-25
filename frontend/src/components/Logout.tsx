@@ -14,7 +14,7 @@ export const Logout = () => {
     const logout = () => {
         // localStorage.removeItem("token");
         // setIsLoggedin(false);
-        navigate('/signup')
+        navigate('/')
     };
 
     // const login = () =>{
