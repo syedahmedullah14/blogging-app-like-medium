@@ -11,6 +11,11 @@ export  interface Blog{
     }
 }
 
+export const useLogout = () =>{
+    const [logout, setLogout] = useState(false);
+    
+}
+
 export const useBlog = ({ id }: { id: string }) =>{
     const [loading, setLoading] = useState(true);
     const [blog, setBlog] = useState<Blog>();

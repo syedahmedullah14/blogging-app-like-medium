@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
 import { Avatar } from "./BlogCard";
+import { Logout } from "./Logout";
 
 export const Appbar = () => {
   return (
     <div className="border-b flex justify-between px-10 py-4">
       <Link
-        to={"/blogs"}
+        to={"/"}
         className="flex flex-col justify-center cursor-pointer"
       >
         Medium
       </Link>
 
-      <div>
+      <div className="flex">
         <Link to={"/publish"}>
           <button
             type="button"
@@ -20,9 +21,10 @@ export const Appbar = () => {
             New Blog
           </button>
         </Link>
-
         <Avatar size={10} name="Jaser" />
+        <Logout />
       </div>
+      
     </div>
   );
 };
