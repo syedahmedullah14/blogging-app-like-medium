@@ -12,8 +12,9 @@ export  interface Blog{
 }
 
 export const useLogout = () =>{
-    const [logout, setLogout] = useState(false);
+    const [isLoggedin, setIsLoggedin] = useState(false);
     
+   
 }
 
 export const useBlog = ({ id }: { id: string }) =>{
