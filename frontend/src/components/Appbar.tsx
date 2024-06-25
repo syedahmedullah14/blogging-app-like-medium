@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Avatar } from "./BlogCard";
 import { Logout } from "./Logout";
-import { useBlogs } from "../hooks";
+// import { useBlogs } from "../hooks";
 
 
 export const Appbar = () => {
@@ -26,7 +26,7 @@ export const Appbar = () => {
             New Blog
           </button>
         </Link>
-        <Avatar size={10} name="Ahmed"/>
+        <Avatar size={6} name="Ahmed"/>
         <Logout />
       </div>
       
